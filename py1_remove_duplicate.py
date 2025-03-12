@@ -1,4 +1,4 @@
-#Remove duplicates from an array
+#Remove duplicates from an integer array
 
 def removeDuplicate(array):
     i = 0
