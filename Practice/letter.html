@@ -53,7 +53,7 @@
 <body>
     <div class="container">
         <h1>Leave Application</h1>
-        <form action="#" method="post" oninput="calculateDays()">
+        <form action="#" method="post">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
@@ -69,40 +69,9 @@
             <label for="end-date">End Date:</label>
             <input type="date" id="end-date" name="end-date" required>
 
-            <p id="leave-summary" style="font-weight: bold; color: #333;"></p>
-
             <button type="submit">Submit Application</button>
         </form>
     </div>
-
-    <script>
-        function calculateDays() {
-            const startDateInput = document.getElementById('start-date').value;
-            const endDateInput = document.getElementById('end-date').value;
-            const leaveSummary = document.getElementById('leave-summary');
-
-            if (startDateInput && endDateInput) {
-                const startDate = new Date(startDateInput);
-                const endDate = new Date(endDateInput);
-
-                if (startDate > endDate) {
-                    leaveSummary.textContent = "End date must be after start date.";
-                    return;
-                }
-
-                const dayDifference = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
-
-                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                const formattedStartDate = startDate.toLocaleDateString(undefined, options);
-                const formattedEndDate = endDate.toLocaleDateString(undefined, options);
-
-                leaveSummary.textContent = `Leave Duration: ${dayDifference} day(s)
-                (From ${formattedStartDate} to ${formattedEndDate})`;
-            } else {
-                leaveSummary.textContent = "";
-            }
-        }
-    </script>
 </body>
 
 </html>
