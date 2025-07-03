@@ -25,7 +25,7 @@ void hanoi(int n, int start, int end)
 int main()
 {
 	int n, start = 1, end = 3;
-	printf("The Peg Hanoi\nEnter number of disks: ");
+	printf("The 3 Peg Hanoi\nEnter number of disks: ");
 	scanf("%d", &n);
 
 	hanoi(n, start, end);
