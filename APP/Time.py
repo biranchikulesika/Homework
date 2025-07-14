@@ -1,26 +1,22 @@
 class Time:
-    def __init__(self, hours=0, minutes=0, seconds=0):
-        self.hr = hours
-        self.min = minutes
-        self.sec = seconds
-        self.normalise()
-
-    def normalise(self):
-        self.min += self.sec // 60
-        self.sec %= 60
-        self.hr += self.min // 60
-        self.min %= 60
+    def __init__(self, h, m, s):
+        self.h = h
+        self.m = m
+        self.s = s
 
     def add(self, other):
-        return Time(self.hr + other.hr, self.min + other.min, self.sec + other.sec)
+        total_sec = self.s + other.s
+        total_min = self.m + other.m + (total_sec // 60)
+        total_hr = self.h + other.h + (total_min // 60)
+        total_min %= 60
+        total_sec %= 60
+        return Time(total_hr, total_min, total_sec)
 
-    def __str__(self):
-        return f"{self.hr} hours, {self.min} minutes, {self.sec} seconds"
+    def display(self):
+        print(f"{self.h} hour(s), {self.m} minute(s), {self.s} second(s)")
 
 
-time1 = Time(7, 53, 45)
-time2 = Time(3, 63, 45)
-
-time3 = time1.add(time2)
-
-print(time3)
+t1 = Time(1, 45, 40)
+t2 = Time(2, 30, 50)
+t3 = t1.add(t2)
+t3.display()
